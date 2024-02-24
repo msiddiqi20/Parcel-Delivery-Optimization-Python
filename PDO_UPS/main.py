@@ -323,7 +323,7 @@ def cli():
     total_distance = main(end_date_time, True)
 
     print("-" * 100)
-    print(f"{'Western Governors University Postal Service':^100}")
+    print(f"{'University Postal Service':^100}")
     print(f"{f'The route was completed in: {total_distance:.2f} Miles':^100}")
     print("-" * 100)
 
