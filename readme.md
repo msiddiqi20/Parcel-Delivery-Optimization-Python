@@ -1,25 +1,48 @@
-# University Parcel Service Routing Program
+# University Parcel Service (UPS) Routing Program
 
 ## Project Overview
 
-This GitHub repository contains the source code for the University Parcel Service Routing Program, designed to optimize delivery routes for the University Parcel Service. The program ensures timely delivery of packages while minimizing travel distances, using advanced data structures and a custom implementation of the Nearest Neighbor algorithm.
+This project aims to optimize the delivery routes for the University Parcel Service (UPS) in Salt Lake City. The program ensures timely delivery of 40 packages while minimizing travel distances, using advanced data structures and a custom implementation of the Nearest Neighbor algorithm.
 
 ## Files
 
-- **Scripts**
+### Scripts
+- **driver.py**: Defines the `Driver` class, managing driver information and status.
+- **hashmap.py**: Implements a custom hash table for efficient data storage and retrieval.
+- **package.py**: Defines the `Package` class, containing delivery details for each package.
+- **graph.py**: Manages the graph data structure for storing delivery routes and locations.
+- **truck.py**: Defines the `Truck` class, handling package loading and route assignment.
+- **vertex.py**: Represents delivery locations as vertices in the routing graph.
+- **main.py**: Coordinates the overall program logic and user interactions.
 
-  - `driver.py`: Main execution script that initiates the routing logic.
-  - `hashmap.py`: Manages the hash table for efficient data storage and retrieval.
-  - `package.py`: Defines the Package class with relevant delivery details.
-  - `graph.py`: Handles the graph data structure for storing delivery routes and locations.
-  - `truck.py`: Manages truck objects including loading and route assignment.
-  - `vertex.py`: Represents delivery locations as vertices in the routing graph.
-  - `main.py`: Coordinates the overall program logic and user interactions.
- 
-- **Data Files**
-  - `addresses.csv`, `distances.csv`, `packages.csv` – Contain the logistical data essential for route planning and package management.
+### Data Files
+- **addresses.csv**: Contains delivery addresses and location details.
+- **distances.csv**: Represents the distance matrix between delivery points.
+- **packages.csv**: Lists package details including ID, address, deadline, and weight.
 
-## Algorithm Overview
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/msiddiqi20/Parcel-Delivery-Optimization-Python.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd UPS-routing-program
+   ```
+3. Ensure you have Python 3 installed.
+
+## Usage
+
+1. Prepare the data files (`addresses.csv`, `distances.csv`, `packages.csv`) and place them in the project directory.
+2. Run the main script to start the program:
+   ```bash
+   python main.py
+   ```
+
+## Program Overview
+
+### Algorithm
 
 The Nearest Neighbor algorithm is used to find the most efficient route:
 
@@ -30,52 +53,36 @@ The Nearest Neighbor algorithm is used to find the most efficient route:
 
 Reference: Nilsson, 2003, p.1
 
-## Pseudocode
+### Data Structures
+- **Custom Hash Table**: Efficiently stores and retrieves package data.
+- **Graph**: Represents delivery routes and locations, facilitating the Nearest Neighbor algorithm.
 
-```plaintext
-distance_traveled = 0
+### Features
+- **Route Optimization**: Ensures all 40 packages are delivered on time.
+- **Custom Data Structures**: Efficient storage and retrieval of package and delivery data.
+- **User Interface**: Allows monitoring of package status, delivery times, and overall truck mileage.
 
-def nearest_neighbor_algorithm(current_location, locations_list):
-    while len(locations_list) > 0:
-        selected_starting_location = current_location
-        locations_list.remove(current_location)
-        distances_to_each_location = {}
-        list_of_possible_distances = []
+## Screenshots
 
-        for next_possible_location in locations_list:
-            distance = distance_between(current_location, next_possible_location)
-            distances_to_each_location[distance] = next_possible_location
-            list_of_possible_distances.append(distance)
+### Package Status
+- Between 8:35 a.m. and 9:25 a.m.
+- Between 9:35 a.m. and 10:25 a.m.
+- Between 12:03 p.m. and 1:12 p.m.
 
-        list_of_possible_distances.sort()
-        shortest_distance = list_of_possible_distances[0]
-        next_location = distances_to_each_location.get(shortest_distance)
-        distance_traveled += shortest_distance
-        nearest_neighbor_algorithm(next_location, locations_list)
+### Completion
+- Total mileage traveled by all trucks.
 
-    return distance_traveled
-```
+## Justification
 
-## Data Structures
+### Algorithm
+- **Strengths**: Efficient route optimization, adaptable to various cities.
+- **Alternative Algorithms**: Greedy algorithm, Genetic algorithm.
+- **Potential Improvements**: Explore more advanced algorithms, implement real-time tracking.
 
-### Hash Map
-
-A hash map is used extensively throughout the program for quick data retrieval and storage, optimizing both performance and maintainability.
-
-### Graph
-
-A graph data structure represents the network of delivery routes, with vertices as delivery locations and edges as possible routes between them.
-
-## Features
-
-- **Efficient Routing**: Ensures all packages are delivered within the constraints using the Nearest Neighbor algorithm.
-- **Scalability**: Handles an increasing number of packages and delivery locations effectively.
-- **User Interface**: Provides real-time updates on package status and truck locations.
-
-## Usage
-
-Run the `driver.py` file to start the program. Interact through the CLI to monitor delivery status or simulate different delivery scenarios.
-
+### Data Structures
+- **Efficiency**: Hash table provides constant time look-up (O(1)), suitable for large datasets.
+- **Scalability**: Space usage scales linearly with the number of packages.
+- **Impact of Changes**: Increasing trucks or cities affects look-up time and space usage.
 
 ## Future Improvements
 
@@ -84,8 +91,4 @@ Run the `driver.py` file to start the program. Interact through the CLI to monit
 
 ## References
 
-- Nilsson, C. (2003). "Heuristics for the Traveling Salesman Problem."
-
-## Author
-
-Muhammad Siddiqi
+Nilsson, C. (2003). "Heuristics for the Traveling Salesman Problem."
